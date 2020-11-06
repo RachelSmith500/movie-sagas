@@ -44,6 +44,10 @@ class AddMovies extends Component{
                 <form onSubmit={this.addNewMovie}/>
                     <input type='text' value={this.state.newMovie.title}onChange={this.handleChange}/>
                     <input type='text' value={this.state.newMovie.poster}onChange={this.handleChange}/>
+                    <label>
+                        Description:
+                        <textarea value={this.state.newMovie.description}onChange={this.handleChange} />
+                    </label>
                     <input type='text' value={this.state.newMovie.description}onChange={this.handleChange}/>
                         <label>
                             Pick a Genre:
@@ -63,6 +67,7 @@ class AddMovies extends Component{
                                 <option value="Superhero">Superhero</option>
                             </select>
                         </label>
+                    
             </>
         )
     }
