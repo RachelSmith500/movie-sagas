@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class Genres extends Component{
+class MovieList extends Component{
 
     render(){
         return (
@@ -12,10 +12,8 @@ class Genres extends Component{
 }
 
 
-
-
 const mapStateToProps = reduxState => ({
     reduxState,
 });
 
-export default connect(mapStateToProps)(Genres);
+export default connect(mapStateToProps)(MovieList);
