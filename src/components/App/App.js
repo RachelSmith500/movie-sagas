@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {HashRouter as Router, Route} from 'react-router-dom';
+import { connect } from 'react-redux';
 import './App.css';
 import MovieList from '../MovieList/MovieList'
 import Details from '../Details/Details'
@@ -8,12 +9,13 @@ import AddMovie from '../AddMovie/AddMovie'
 class App extends Component {
   // Renders the entire app on the DOM
      componentDidMount = () => {
-        this.getMovies()
+        this.getMovies();
     }
 
     getMovies = () => {
         this.props.dispatch({type: 'GET_MOVIES'})
     }
+
   render() {
     return (
       <div className="App">
@@ -30,4 +32,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = reduxState => ({
+  reduxState,
+});
+
+export default connect(mapStateToProps)(App);

@@ -8,7 +8,7 @@ class MovieList extends Component{
     render(){
         return (
             <>
-                {this.props.reduxStore.movies.map((movie) => {
+                {this.props.reduxState.movies.map((movie) => {
                         return <img src={movie.poster} />
                     })}
             </>
