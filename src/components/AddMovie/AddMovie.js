@@ -17,12 +17,11 @@ class AddMovies extends Component{
                 ...this.state.newMovie,
                 title: event.target.value,
                 poster: event.target.value,
-                description: event.target.description,
-                genre: event.target.genre
+                description: event.target.value,
+                genre: event.target.value
             }
         });
     }
-
     addNewMovie = event => {
         event.preventDefault();
         this.props.dispatch({ type: 'ADD_MOVIE', payload: this.state.newMovie})
@@ -35,23 +34,22 @@ class AddMovies extends Component{
             }
         });
     }
-
     render(){
         return (
             <>
                 <h3>List of Movies</h3>
                 <pre>{JSON.stringify(this.state)}</pre>
                 <form onSubmit={this.addNewMovie}/>
-                    <input type='text' value={this.state.newMovie.title}onChange={this.handleChange}/>
-                    <input type='text' value={this.state.newMovie.poster}onChange={this.handleChange}/>
+                    <input type='text' placeholder='title' value={this.state.title}onChange={this.handleChange}/>
+                    <input type='text' placeholder='poster' value={this.state.poster}onChange={this.handleChange}/>
                     <label>
                         Description:
-                        <textarea value={this.state.newMovie.description}onChange={this.handleChange} />
+                        <textarea value={this.state.description}onChange={this.handleChange} />
                     </label>
-                    <input type='text' value={this.state.newMovie.description}onChange={this.handleChange}/>
+                    {/* <input type='text' value={this.state.genre}onChange={this.handleChange}/> */}
                         <label>
                             Pick a Genre:
-                            <select value={this.state.newMovie.Genre} onChange={this.handleChange}>
+                            <select value={this.state.genre} onChange={this.handleChange}>
                                 <option value="Adventure">Adventure</option>
                                 <option value="Animated">Animated</option>
                                 <option value="Biographical">Biographical</option>
@@ -67,6 +65,8 @@ class AddMovies extends Component{
                                 <option value="Superhero">Superhero</option>
                             </select>
                         </label>
+                        <button type="submit">onSubmit</button>
+                   
                     
             </>
         )
