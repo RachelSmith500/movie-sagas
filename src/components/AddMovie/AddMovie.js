@@ -39,7 +39,7 @@ class AddMovies extends Component{
             <>
                 <h3>List of Movies</h3>
                 <pre>{JSON.stringify(this.state)}</pre>
-                <form onSubmit={this.addNewMovie}/>
+                <form onSubmit={this.addNewMovie}>
                     <input type='text' placeholder='title' value={this.state.title}onChange={this.handleChange}/>
                     <input type='text' placeholder='poster' value={this.state.poster}onChange={this.handleChange}/>
                     <label>
@@ -66,7 +66,7 @@ class AddMovies extends Component{
                             </select>
                         </label>
                         <button type="submit">onSubmit</button>
-                   
+                  </form>
                     
             </>
         )
