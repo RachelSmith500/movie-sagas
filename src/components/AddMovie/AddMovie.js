@@ -6,7 +6,8 @@ class AddMovies extends Component{
         newMovie:{
             title: '',
             poster: '',
-            description: ''
+            description: '',
+            genre:''
         }
     }
 

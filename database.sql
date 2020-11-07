@@ -19,12 +19,11 @@ CREATE TABLE "genres" (
 
 HAVE NOT CREATED THIS TABLE YET 
 
-CREATE TABLE "junction_table" (
-  "id" SERIAL PRIMARY KEY,
-  "movie_id" VARCHAR(80),
-  "genres" VARCHAR(80)
-)
-
+CREATE TABLE "movies_genres" (
+	"movie_id" INT REFERENCES "movies",
+	"genre_id" INT REFERENCES "genres",
+	PRIMARY KEY ("movie_id", "genre_id")
+);
 
 --------[ DATA! ]---------
 
