@@ -36,7 +36,7 @@ class AddMovies extends Component{
                 title: '',
                 poster: '',
                 description: '',
-                genre: ''
+                genre_id: ''
             }
         });
     }
@@ -45,6 +45,21 @@ class AddMovies extends Component{
         this.props.dispatch({type: 'GET_GENRES'})
     }
 
+    save=(event) => {
+        if(this.state.save ===true){
+        }else{
+            this.props.dispatch ({type:'ADD_MOVIE', payload:this.state.newMovie})
+            this.props.history.push('/home')
+        }
+    }
+
+    cancel=(event) => {
+        if(this.state.cancelMovie === true){
+        }else{
+            // this.props.dispatch ({type:'CANCEL_MOVIE', payload:this.state.newMovie})
+            this.props.history.push('/home')
+        }
+    }
     render(){
         return (
             <>
@@ -67,9 +82,10 @@ class AddMovies extends Component{
                                 })}
                             </select>
                         </label>
-                        <button type="submit">Submit</button>
+                        {/* <button type="submit">Submit</button> */}
+                        <button onClick= {this.save}>Save</button>
+                        <button onClick={this.cancel}>Cancel</button>
                   </form>
-                    
             </>
         )
     }
