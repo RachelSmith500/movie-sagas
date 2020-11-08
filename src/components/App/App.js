@@ -23,7 +23,7 @@ class App extends Component {
         <Router>
           {/* ADD PAGES! */}
           <Route exact path="/home" component={MovieList}/>
-          <Route path="/details" component={Details} />
+          <Route path="/details/:id" component={Details} />
           <Route path="/addMovie" component={AddMovie} />
         </Router>
         <p>Empty Page</p>

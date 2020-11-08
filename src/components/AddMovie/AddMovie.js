@@ -8,7 +8,7 @@ class AddMovies extends Component{
             title: '',
             poster: '',
             description: '',
-            genre_id: ''
+            genre: ''
         }
     }
 
@@ -24,7 +24,7 @@ class AddMovies extends Component{
                 title: event.target.value,
                 poster: event.target.value,
                 description: event.target.value,
-                genre_id: event.target.value
+                genre: event.target.value
             }
         });
     }
@@ -36,7 +36,7 @@ class AddMovies extends Component{
                 title: '',
                 poster: '',
                 description: '',
-                genre_id: ''
+                genre: ''
             }
         });
     }
@@ -46,7 +46,7 @@ class AddMovies extends Component{
     }
 
     save=(event) => {
-        if(this.state.save ===true){
+        if(this.state.save === true){
         }else{
             this.props.dispatch ({type:'ADD_MOVIE', payload:this.state.newMovie})
             this.props.history.push('/home')
