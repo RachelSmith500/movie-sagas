@@ -17,8 +17,6 @@ CREATE TABLE "genres" (
 -- This table will need to be populated with some data as well (INSERTS)
 -- Recall that this Junction Table will just be a table of ids!
 
-HAVE NOT CREATED THIS TABLE YET 
-
 CREATE TABLE "movies_genres" (
 	"movie_id" INT REFERENCES "movies",
 	"genre_id" INT REFERENCES "genres",

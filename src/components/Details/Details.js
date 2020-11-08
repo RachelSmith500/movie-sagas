@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// import { generatePath } from 'react-router-dom';
 
 class Details extends Component{
 
     render(){
-        return (
-            <>
-            </>
-        )
+        const movies = this.props.reduxState.movies ? this.props.reduxState.movies: [];
+            return (
+                <>
+                    {movies.map((movie) => {
+                        return <p>{movie.description}</p>
+                    })}
+                </>
+            )
     }
 }
 

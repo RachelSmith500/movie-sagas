@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+
 class MovieList extends Component{
 
-
-
     render(){
+        const movies = this.props.reduxState.movies ? this.props.reduxState.movies : [];
+
         return (
             <>
-                {this.props.reduxState.movies.map((movie) => {
-                        return <img src={movie.poster} />
-                    })}
+                {movies.map((movie) => {
+                    return<><img src={movie.poster}/>
+                    <p>{movie.description}</p></>
+                })}
             </>
         )
     }
