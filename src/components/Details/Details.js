@@ -4,8 +4,12 @@ import { connect } from 'react-redux';
 
 class Details extends Component{
 
+    
+    // props.history.push('/home')
+    
     render(){
         const movies = this.props.reduxState.movies ? this.props.reduxState.movies: [];
+       
             return (
                 <>
                     {movies.map((movie) => {
