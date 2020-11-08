@@ -28,18 +28,20 @@ class Details extends Component{
     getGenreIndex = () => {
         for(let genre of genres){
             if(genre.id === genreTag.genres_id){
-                return genres,indexOf(genre);
+                return genres.indexOf(genre);
             }
         }
     }
-    
+
     render(){
         const movies = this.props.reduxState.movies ? this.props.reduxState.movies: [];
        
             return (
                 <>
-                    {movies.map((movie) => {
-                        return <p>{movie.description}</p>
+                    <p>{movies[this.props.match.params.id-1].description}</p>
+                        {console.log('verifying props', this.props)}
+                    {this.state.details.map((genreTag) => {
+                        return<p>{this.state.genres[this.getGenreIndex(this.state.genres, genreTag)].name}</p>
                     })}
                 </>
             )
