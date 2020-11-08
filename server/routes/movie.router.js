@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+// get movies
 router.get('/', (req, res) => {
   const queryText = `SELECT * FROM "movies";`
   pool.query(queryText)
@@ -12,6 +13,21 @@ router.get('/', (req, res) => {
       console.log('Error with Get route for home', err);
       res.sendStatus(500)
     });
+})
+//get details for a selected movie
+router.get('/details/:id', (req, res) => {
+  console.log(req.params.id);
+  const queryText = `SELECT * FROM "movies" WHERE "id" = $1;`
+
+  pool.query(queryText, [req.params.id])
+   .then(result => {
+     console.log(result.rows);
+     res.send(result.rows)
+   })
+   .catch(err => {
+     console.log('Error in GET DETAILS route', err);
+     res.sendStatus(500)
+   });
 })
 
 router.post('/', (req, res) => {

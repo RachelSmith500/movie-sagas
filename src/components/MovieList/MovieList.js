@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 class MovieList extends Component{
 
+
+
     render(){
         const movies = this.props.reduxState.movies ? this.props.reduxState.movies : [];
 
