@@ -8,8 +8,7 @@ class AddMovies extends Component{
             title: '',
             poster: '',
             description: '',
-            genre: ''
-          
+            genre_id: ''
         }
     }
 
@@ -25,7 +24,7 @@ class AddMovies extends Component{
                 title: event.target.value,
                 poster: event.target.value,
                 description: event.target.value,
-                genre: event.target.value
+                genre_id: event.target.value
             }
         });
     }

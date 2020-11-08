@@ -83,7 +83,7 @@ function* getDetails(action) {
     }
 }
 
-function* addNewMovie(){
+function* addNewMovie(action){
     console.log('in the addNewMovie function', action.payload);
     try{
         yield axios.post('/api/movie', action.payload)

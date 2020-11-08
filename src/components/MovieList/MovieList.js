@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 
 class MovieList extends Component{
 
-
+    handleClick = () =>{
+        console.log('handleClick function clicked')
+        this.props.history.push('/details');
+    }
 
     render(){
         const movies = this.props.reduxState.movies ? this.props.reduxState.movies : [];
@@ -12,7 +15,7 @@ class MovieList extends Component{
         return (
             <>
                 {movies.map((movie) => {
-                    return<><img src={movie.poster}/>
+                    return<><img src={movie.poster} onClick={this.handleClick}/>
                     <p>{movie.description}</p></>
                 })}
             </>
