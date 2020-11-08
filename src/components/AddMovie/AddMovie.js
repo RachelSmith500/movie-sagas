@@ -8,7 +8,7 @@ class AddMovies extends Component{
             title: '',
             poster: '',
             description: '',
-            genre: ''
+            name: '',
         }
     }
 
@@ -16,15 +16,12 @@ class AddMovies extends Component{
         this.getGenres();
     }
 
-    handleChange = event => {
+    handleChange = (event, type) => {
         console.log('new movie added')
         this.setState({
             newMovie: {
                 ...this.state.newMovie,
-                title: event.target.value,
-                poster: event.target.value,
-                description: event.target.value,
-                genre: event.target.value
+              [type]:event.target.value,
             }
         });
     }
@@ -36,7 +33,7 @@ class AddMovies extends Component{
                 title: '',
                 poster: '',
                 description: '',
-                genre: ''
+                name: '',
             }
         });
     }
@@ -56,7 +53,7 @@ class AddMovies extends Component{
     cancel=(event) => {
         if(this.state.cancelMovie === true){
         }else{
-            // this.props.dispatch ({type:'CANCEL_MOVIE', payload:this.state.newMovie})
+            this.props.dispatch ({type:'CANCEL_MOVIE', payload:this.state.cancel})
             this.props.history.push('/home')
         }
     }
@@ -66,11 +63,11 @@ class AddMovies extends Component{
                 <h3>List of Movies</h3>
                 <pre>{JSON.stringify(this.state)}</pre>
                 <form onSubmit={this.addNewMovie}>
-                    <input type='text' placeholder='title' value={this.state.title}onChange={this.handleChange}/>
-                    <input type='text' placeholder='poster' value={this.state.poster}onChange={this.handleChange}/>
+                    <input type='text' placeholder='title' value={this.state.title}onChange={(event) => this.handleChange (event, 'title')}/>
+                    <input type='text' placeholder='poster' value={this.state.poster}onChange={(event) => this.handleChange(event, 'poster')}/>
                     <label>
                         Description:
-                        <textarea value={this.state.description}onChange={this.handleChange} />
+                        <textarea value={this.state.description}onChange={(event) => this.handleChange(event, 'description')} />
                     </label>
                     {/* <input type='text' value={this.state.genre}onChange={this.handleChange}/> */}
                         <label>

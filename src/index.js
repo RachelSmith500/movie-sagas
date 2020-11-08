@@ -43,7 +43,7 @@ const genres = (state = [], action) => {
     }
 }
 
-const details = (state = {}, action) => {
+const details = (state = [], action) => {
     switch (action.type) {
         case 'SET_DETAILS':
             return action.payload;
@@ -73,11 +73,10 @@ function* getGenres(){
 }
 
 function* getDetails(action) {
-    console.log(action.payload);
     try{
-        let response = yield axios.get(`/api/movie/details/${action.payload}`)
+        let response = yield axios.get(`/api/junction/${action.payload}`)
         console.log(response.data);
-        yield put({ type: 'SET_DETAILS', payload: response.data[0]})
+        yield put({ type: 'SET_DETAILS', payload: response.data})
     }catch(error){
         console.log('Error with getDetails saga', error);
     }
@@ -87,7 +86,7 @@ function* addNewMovie(action){
     console.log('in the addNewMovie function', action.payload);
     try{
         yield axios.post('/api/movie', action.payload)
-        yield put ({type:'ADD_MOVIE'});
+        yield put ({type:'GET_MOVIES'});
     }catch(error){
             console.log('error in post', error);
     }
