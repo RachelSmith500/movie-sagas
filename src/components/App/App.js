@@ -11,7 +11,7 @@ class App extends Component {
      componentDidMount = () => {
         this.getMovies();
     }
-
+    //getting movies on page load
     getMovies = () => {
         this.props.dispatch({type: 'GET_MOVIES'})
     }
@@ -21,7 +21,7 @@ class App extends Component {
       <div className="App">
         <h1>Movies!</h1>
         <Router>
-          {/* ADD PAGES! */}
+          {/* routes defined */}
           <Route exact path="/home" component={MovieList}/>
           <Route path="/details/:id" component={Details} />
           <Route path="/addMovie" component={AddMovie} />
