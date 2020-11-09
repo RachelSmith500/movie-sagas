@@ -42,18 +42,18 @@ class AddMovies extends Component{
         this.props.dispatch({type: 'GET_GENRES'})
     }
 
-    save=(event) => {
-        if(this.state.save === true){
+    saveMovie=(event) => {
+        if(this.state.saveMovie === true){
         }else{
             this.props.dispatch ({type:'ADD_MOVIE', payload:this.state.newMovie})
             this.props.history.push('/home')
         }
     }
 
-    cancel=(event) => {
+    cancelMovie=(event) => {
         if(this.state.cancelMovie === true){
         }else{
-            this.props.dispatch ({type:'CANCEL_MOVIE', payload:this.state.cancel})
+            this.props.dispatch ({type:'CANCEL_MOVIE', payload:this.state.cancelMovie})
             this.props.history.push('/home')
         }
     }
@@ -61,7 +61,7 @@ class AddMovies extends Component{
         return (
             <>
                 <h3>List of Movies</h3>
-                <pre>{JSON.stringify(this.state)}</pre>
+                {/* <pre>{JSON.stringify(this.state)}</pre> */}
                 <form onSubmit={this.addNewMovie}>
                     <input type='text' placeholder='title' value={this.state.title}onChange={(event) => this.handleChange (event, 'title')}/>
                     <input type='text' placeholder='poster' value={this.state.poster}onChange={(event) => this.handleChange(event, 'poster')}/>
@@ -72,16 +72,16 @@ class AddMovies extends Component{
                     {/* <input type='text' value={this.state.genre}onChange={this.handleChange}/> */}
                         <label>
                             Pick a Genre:
-                            <select value={this.state.genre} onChange={this.handleChange}>
+                            <select value={this.state.value} onChange={(event) => this.handleChange(event, 'genre')}>
                                 {console.log(this.props.reduxState.genres)}
                                 {this.props.reduxState.genres.map((genre) => {
-                                    return <option value="name">{genre.name}</option>
+                                    return <option value={genre.id}>{genre.name}</option>
                                 })}
                             </select>
                         </label>
                         {/* <button type="submit">Submit</button> */}
-                        <button onClick= {this.save}>Save</button>
-                        <button onClick={this.cancel}>Cancel</button>
+                        <button onClick= {this.saveMovie}>Save</button>
+                        <button onClick={this.cancelMovie}>Cancel</button>
                   </form>
             </>
         )
