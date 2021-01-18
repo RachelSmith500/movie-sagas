@@ -48,6 +48,7 @@ class Details extends Component{
                 <>
                     {/*  */}
                     <p>{movies[this.props.match.params.id-1].description}</p>
+                    <img src={movies[this.props.match.params.id-1].poster}/>
                     {/* back button that runs the onClick function when clicked */}
                     <button onClick={this.goBack}>Back</button>
                         {console.log(this.props)}

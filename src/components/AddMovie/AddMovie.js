@@ -38,6 +38,7 @@ class AddMovies extends Component{
             }
         });
     }
+    // genre_id instead of name
     //getting our Genres
     getGenres = () => {
         this.props.dispatch({type: 'FETCH_GENRES'})
