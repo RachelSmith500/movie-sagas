@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 // import { generatePath } from 'react-router-dom';
 
 class Details extends Component{
  //defining state 
     state ={
-        details: [],
-        genres: []
+        details: this.props.details,
+        genres: this.props.reduxState.genres
     }
     //on page load grabbing our data
     //getting the details and the genres
@@ -14,24 +15,26 @@ class Details extends Component{
     componentDidMount = () => {
         this.getDetails();
         this.getGenres();
-        this.setState({
-            details: this.props.reduxState.details ? this.props.reduxState.details: [],
-            genres: this.props.reduxState.genres ? this.props.reduxState.genres : []
-        })
+      
     }
     //getting details
     getDetails = () => {
         this.props.dispatch({type: 'GET_DETAILS', payload:this.props.match.params.id})
+      
     }
     //getting genres 
     getGenres = () => {
         this.props.dispatch({type: 'FETCH_GENRES'})
+      
     }
     // setting genreIndex function 
     //using .indexOf method 
     getGenreIndex = (genres, genreTag) => {
+        console.log('in getGenresIndex', genreTag, genres)
         for(let genre of genres){
-            if(genre.id === genreTag.genres_id){
+            console.log(genre.id, genreTag.genre_id)
+            if(genre.id === genreTag.genre_id){
+                console.log(genres.indexOf.genre)
                 return genres.indexOf(genre);
             }
         }
@@ -52,9 +55,11 @@ class Details extends Component{
                     {/* back button that runs the onClick function when clicked */}
                     <button onClick={this.goBack}>Back</button>
                         {console.log(this.props)}
-                    {this.state.details.map((genreTag) => {
-                        return<p>{this.state.genres[this.getGenreIndex(this.state.genres, genreTag)].name}</p>
-                    })}
+                        {console.log(this.state)}
+                    {this.props.reduxState.details.length > 0 ? 
+                    this.props.reduxState.details.map((genreTag) => {
+                        return<p>{this.props.reduxState.genres[this.getGenreIndex(this.props.reduxState.genres, genreTag)].name}</p>
+                    }):'no genres'}
                    
                 </>
             )
@@ -66,4 +71,4 @@ const mapStateToProps = reduxState => ({
     reduxState,
 });
 
-export default connect(mapStateToProps)(Details);
+export default withRouter (connect(mapStateToProps)(Details));

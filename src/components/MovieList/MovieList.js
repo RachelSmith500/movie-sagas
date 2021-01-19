@@ -8,6 +8,7 @@ class MovieList extends Component{
     //sending the user to the details page 
     //referencing the specific movie that was clicked 
     handleClick = (movie) =>{
+        this.props.dispatch({type: 'GET_DETAILS', payload:movie})
         this.props.history.push(`/details/${movie}`);
     }
     //defining the movies variable 
